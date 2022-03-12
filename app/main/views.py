@@ -4,13 +4,15 @@ from ..models import User
 from .forms import UpdateProfile
 from .. import db
 from flask_login import login_required, current_user
+from ..requests import get_quote
 
 # Views
 @main.route('/')
 def index():
     title = 'This is Me'
+    random_quote = get_quote()
 
-    return render_template('index.html', title=title)
+    return render_template('index.html', title = title, quote = random_quote)
 
 @main.route('/user/<uname>')
 def profile(uname):
