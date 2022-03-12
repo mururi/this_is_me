@@ -1,0 +1,2 @@
+Hello {{user.username}},
+Welcome to This is me blog. Enjoy the awesome reads.
