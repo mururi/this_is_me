@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<p>{{ quote.quote }}</p>
-<p>~ {{ quote.author }}</p>
+  {% if current_user.is_authenticated %}
+    <a href="/new-post" class="btn text-center btn--styling">New Pitch</a>
+  {% endif %}
+  <p>{{ quote.quote }}</p>
+  <p>~ {{ quote.author }}</p>
 
 {% endblock %}
