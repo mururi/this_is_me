@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
+
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+.custom-nav {
+  background-color: #F7F3F0;
+}
+
+.custom-nav h1 {
+  font-family: 'Stalemate', cursive;
+  color: #303030;
+}
+
+.custom-nav li a {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #303030;
+}
