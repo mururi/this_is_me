@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, abort
 from . import main
-from ..models import User
-from .forms import UpdateProfile
+from ..models import User, Post
+from .forms import NewPost, UpdateProfile
 from .. import db
 from flask_login import login_required, current_user
 from ..requests import get_quote
@@ -42,3 +42,21 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)
+
+@main.route('/new-post', methods = ['GET', 'POST'])
+@login_required
+def new_post():
+    form = NewPost()
+
+    if form.validate_on_submit():
+        content = form.content.data
+        author = current_user.id
+    
+        post = Post(content=content, author=author)
+
+        db.session.add(post)
+        db.session.commit()
+
+        return redirect(url_for('main.index'))
+
+    return render_template('new_post.html', new_post_form = form)

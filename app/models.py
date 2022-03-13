@@ -15,6 +15,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
+    posts = db.relationship('Post', backref = 'user', lazy = "dynamic", passive_deletes=True)
 
     @property
     def password(self):
@@ -45,8 +46,8 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key = True)
     date_created = db.Column(db.DateTime(timezone = True), default = func.now())
-    content = db.Column(db.String())
-    author = db.Column(db.Integer, db.ForeignKey('users.id'))
+    content = db.Column(db.String(), nullable=False)
+    author = db.Column(db.Integer, db.ForeignKey('users.id', ondelete="CASCADE"), nullable=False)
     
 
     def __repr__(self):
