@@ -12,7 +12,9 @@ def index():
     title = 'This is Me'
     random_quote = get_quote()
 
-    return render_template('index.html', title = title, quote = random_quote)
+    posts = Post.query.all()
+
+    return render_template('index.html', title = title, quote = random_quote, posts = posts)
 
 @main.route('/user/<uname>')
 def profile(uname):

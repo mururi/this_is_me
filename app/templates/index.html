@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <!-- New post button -->
   {% if current_user.is_authenticated %}
-    <a href="/new-post" class="btn text-center btn--styling">New Pitch</a>
+    <a href="/new-post" class="btn text-center btn-primary">New Post</a>
   {% endif %}
+
+  <!-- All posts -->
+  {% for post in posts %}
+  <div>
+    {{ post.content }}
+  </div>
+  <p>Posted by {{ post.user.username | title }}</p>
+  <p class="text-muted">Posted on: {{ post.date_created.strftime('%Y-%m-%d') }}</p>
+  {% endfor %}
+  <!-- Random quote from quote API -->
   <p>{{ quote.quote }}</p>
   <p>~ {{ quote.author }}</p>
 
