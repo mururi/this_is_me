@@ -2,6 +2,7 @@ from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from sqlalchemy.sql import func
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -39,3 +40,14 @@ class Quote:
         self.author = author
         self.id = id
         self.quote = quote
+
+class Post(db.Model):
+    __tablename__ = 'posts'
+    id = db.Column(db.Integer, primary_key = True)
+    date_created = db.Column(db.DateTime(timezone = True), default = func.now())
+    content = db.Column(db.String())
+    author = db.Column(db.Integer, db.ForeignKey('users.id'))
+    
+
+    def __repr__(self):
+        return f'{self.date_created}'
