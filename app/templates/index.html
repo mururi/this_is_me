@@ -3,11 +3,14 @@
 {% block content %}
   <!-- New post button -->
   {% if current_user.is_authenticated %}
-    <a href="/new-post" class="btn text-center btn-primary">New Post</a>
+    <a href="/new-post2" class="btn text-center btn-primary">New Post</a>
   {% endif %}
 
   <!-- All posts -->
   {% for post in posts %}
+  <div>
+    <img src="{{ url_for('static', filename=post.featured_img) }}" alt="">
+  </div>
   <div>
     {{ post.content }}
   </div>

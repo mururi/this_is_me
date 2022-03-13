@@ -46,6 +46,8 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key = True)
     date_created = db.Column(db.DateTime(timezone = True), default = func.now())
+    title = db.Column(db.String(255), nullable=False)
+    featured_img = db.Column(db.String(), nullable=False)
     content = db.Column(db.String(), nullable=False)
     author = db.Column(db.Integer, db.ForeignKey('users.id', ondelete="CASCADE"), nullable=False)
     

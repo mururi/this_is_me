@@ -1,8 +1,8 @@
-from flask import render_template, redirect, url_for, abort
+from flask import render_template, redirect, url_for, abort, request
 from . import main
 from ..models import User, Post
 from .forms import NewPost, UpdateProfile
-from .. import db
+from .. import db, photos
 from flask_login import login_required, current_user
 from ..requests import get_quote
 
@@ -62,3 +62,25 @@ def new_post():
         return redirect(url_for('main.index'))
 
     return render_template('new_post.html', new_post_form = form)
+
+@main.route('/new-post2', methods = ['GET', 'POST'])
+@login_required
+def new_post2():
+    if request.method == "POST":
+        title = request.form.get('title')
+        content = request.form.get('content')
+        author = current_user.id
+
+        # if 'image' in request.files:
+        filename = photos.save(request.files['image'])
+        path = f'img/uploads/{filename}'
+        featured_img = path
+
+        post = Post(title=title, featured_img=featured_img, content=content, author=author)
+
+        db.session.add(post)
+        db.session.commit()
+
+        return redirect(url_for('main.index'))
+
+    return render_template('new_post2.html')

@@ -1,0 +1,17 @@
+<form action="/new-post2" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="title" class="form-label">Blog Post Title</label>
+    <input type="text" class="form-control" name="title" id="title" required>
+  </div>
+
+  <div class="custom-file mb-3">
+    <label for="image" class="custom-file-label">Select Featured Image</label>
+    <input type="file" class="custom-file-input" name="image" id="image" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="content" class="form-label">Post Body</label>
+    <textarea class="form-control" name="content" id="content" rows="3" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
