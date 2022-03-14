@@ -1,10 +1,10 @@
 #featured-container {
-  background-color: #F7F3F0;
+  background: linear-gradient(#f7f3f0 60%, #fff 60%);;
 }
 
 #image-container {
   border-radius: 25px;
-  min-height: 100%;
+  max-height: 70vh;
   vertical-align: middle;
 }
 
