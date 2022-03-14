@@ -94,10 +94,11 @@ def view_post(post_id):
     comment_form = NewComment()
 
     post = Post.query.filter_by(id = post_id).first()
+    comments = post.comments
     if post is None:
         abort(404)
 
-    return render_template('view_post.html', post = post, comment_form = comment_form)
+    return render_template('view_post.html', post = post, comment_form = comment_form, comments = comments)
 
 @main.route('/post/<int:post_id>/new-comment', methods = ['GET', 'POST'])
 def new_comment(post_id):
