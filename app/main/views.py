@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, abort, request
 from . import main
 from ..models import User, Post
-from .forms import NewPost, UpdateProfile
+from .forms import NewPost, UpdateProfile, NewComment
 from .. import db, photos
 from flask_login import login_required, current_user
 from ..requests import get_quote
@@ -91,9 +91,10 @@ def view_post(post_id):
     '''
     View post function that returns the full post page
     '''
+    comment_form = NewComment()
 
     post = Post.query.filter_by(id = post_id).first()
     if post is None:
         abort(404)
 
-    return render_template('view_post.html', post = post)
+    return render_template('view_post.html', post = post, comment_form = comment_form)

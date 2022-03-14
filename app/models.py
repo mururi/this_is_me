@@ -63,3 +63,6 @@ class Comment(db.Model):
     author = db.Column(db.String(255), nullable=False)
     content = db.Column(db.String(), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete="CASCADE"), nullable=False)
+
+    def __repr__(self):
+        return f'{self.date_created}'
