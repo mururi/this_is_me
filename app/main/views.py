@@ -5,6 +5,7 @@ from .forms import NewPost, UpdateProfile
 from .. import db, photos
 from flask_login import login_required, current_user
 from ..requests import get_quote
+from sqlalchemy import desc
 
 # Views
 @main.route('/')
@@ -12,7 +13,7 @@ def index():
     title = 'This is Me'
     random_quote = get_quote()
 
-    posts = Post.query.all()
+    posts = Post.query.order_by(desc(Post.date_created)).all()
 
     return render_template('index.html', title = title, quote = random_quote, posts = posts)
 
@@ -84,3 +85,15 @@ def new_post2():
         return redirect(url_for('main.index'))
 
     return render_template('new_post2.html')
+
+@main.route('/post/<int:post_id>')
+def view_post(post_id):
+    '''
+    View post function that returns the full post page
+    '''
+
+    post = Post.query.filter_by(id = post_id).first()
+    if post is None:
+        abort(404)
+
+    return render_template('view_post.html', post = post)

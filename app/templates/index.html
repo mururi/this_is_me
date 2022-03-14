@@ -12,12 +12,14 @@
 
       <div class="row py-5">
         <div class="col-md-6 pt-5 position-relative">
+          
           {% with latest=posts|last %}
           <h6>{{ latest.date_created.strftime('%Y-%m-%d') }}</h6>
           <h2>{{ latest.title }}</h2>
           <p class="pb-5 mb-5">{{ latest.content | truncate(300) }}</p>
+          <a href="/post/{{ latest.id }}" class="btn btn-secondary">Read More</a>
           {% endwith %}
-          <a href="/" class="btn btn-secondary">Read More</a>
+          
           <div class="position-absolute bottom-0 start-0">
             <!-- Random quote from quote API -->
             <p>{{ quote.quote }}</p>
@@ -60,7 +62,7 @@
         <div class="card custom-card mb-5">
           <img src="{{ url_for('static', filename=post.featured_img) }}" class="card-img-top card-img-style" alt="">
           <div class="card-body p-4">
-            <h3 class="card-title">{{ post.title }}</h3>
+            <a href="/post/{{ post.id }}"><h3 class="card-title">{{ post.title }}</h3></a>
             <p class="card-text">{{ post.content | truncate(500)}}</p>
             <p class="card-text">by {{ post.user.username | title }} ----- {{ post.date_created.strftime('%Y-%m-%d') }}</p>
           </div>
