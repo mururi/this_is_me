@@ -42,7 +42,7 @@ To run this app locally, you need a PC with the following installed:
 1. Clone this repository using
 
     ```bash
-      git clone https://github.com/mururi/daily_planet.git
+      git clone https://github.com/mururi/this_is_me.git
     ```
 
     or by downloading a ZIP file of the code.
