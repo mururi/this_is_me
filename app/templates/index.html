@@ -17,7 +17,7 @@
           <h6>{{ latest.date_created.strftime('%Y-%m-%d') }}</h6>
           <h2>{{ latest.title }}</h2>
           <p class="pb-5 mb-5">{{ latest.content | truncate(300) }}</p>
-          <a href="/post/{{ latest.id }}" class="btn btn-secondary">Read More</a>
+          <a href="/post/{{ latest.id }}" class="btn custom-btn">Read More</a>
           {% endwith %}
           
           <div class="position-absolute bottom-0 start-0">
