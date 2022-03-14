@@ -12,7 +12,7 @@
 
       <div class="row py-5">
         <div class="col-md-6 pt-5 position-relative">
-          
+
           {% with latest=posts|last %}
           <h6>{{ latest.date_created.strftime('%Y-%m-%d') }}</h6>
           <h2>{{ latest.title }}</h2>
@@ -38,6 +38,7 @@
     </div>
   </div>
 
+  <!-- Subscribe section -->
   <div class="container-xxl">
     <div class="row d-flex align-items-center py-4 px-4 my-5 subscribe-container">
       <div class="col-md-6">
@@ -53,6 +54,7 @@
     </div>
   </div>
 
+  <!-- Posts section -->
   <div class="container-xxl pb-5">
     <h2 class="mb-5">Recent Blog Posts</h2>
     <div class="row d-flex justify-content-between">
