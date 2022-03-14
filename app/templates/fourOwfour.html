@@ -1,5 +1,18 @@
 {% extends 'base.html'%}
 
+<!-- Styles block -->
+{% block styles %}
+  {{ super () }}
+  <link rel="stylesheet" href="{{url_for('static',filename='css/fourOwfour.css')}}">
+{% endblock %}
+
 {% block content %}
-  <h1>WHOOOPS we can't find that page</h1>
+  <div class="container-fluid">
+    <div class="d-flex flex-column justify-content-center align-items-center fourOwfour">
+      <h1 class="display-1">Oops!</h1>
+      <h6>THERE IS NOTHING THERE</h6>
+      <a href="/" class="btn custom-btn">GO TO HOME PAGE</a>
+    </div>
+  </div>
+  
 {% endblock %}

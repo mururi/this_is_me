@@ -1,28 +1,45 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
-<div class="row">
-<!-- displaying  Username-->
-  <div class="col-md-4">
-    <h3> {{user.username| capitalize}} </h3>
+<div class="container-xxl">
+  <div class="row">
+    <!-- displaying  Username-->
+    <div class="col-md-4">
+      <h3> {{user.username| capitalize}} </h3>
 
-    <!--Displaying user bio-->
-    {% if user.bio %}
+      <!--Displaying user bio-->
+      {% if user.bio %}
       <p> {{user.bio}}</p>
-    {%else%}
+      {%else%}
       <p> {{user.username| capitalize}} has no bio </p>
-    {% endif %}
-    {% if user == current_user %}
-    <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
-    {% endif %}
+      {% endif %}
+      {% if user == current_user %}
+      <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+      {% endif %}
 
-    <!-- Display User Posts -->
-    
+    </div>
 
   </div>
-
-</div>
+  <!-- Display User Posts -->
+  <h2 class="my-5">Recent Blog Posts</h2>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+      <!-- All posts -->
+      {% for post in posts %}
+      <div class="card custom-card mb-5">
+        <img src="{{ url_for('static', filename=post.featured_img) }}" class="card-img-top card-img-style" alt="">
+        <div class="card-body p-4">
+          <a href="/post/{{ post.id }}">
+            <h3 class="card-title">{{ post.title }}</h3>
+          </a>
+          <p class="card-text">{{ post.content | truncate(500)}}</p>
+          <p class="card-text">by {{ post.user.username | title }} ----- {{ post.date_created.strftime('%Y-%m-%d') }}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
 </div>
 {% endblock %}
