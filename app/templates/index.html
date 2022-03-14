@@ -77,7 +77,11 @@
       <div class="col-md-3">
         <!-- New post button -->
         {% if current_user.is_authenticated %}
-        <a href="/new-post2" class="btn text-center btn-primary">New Post</a>
+        <div class="card custom-card mb-5" style="height: 400px;">
+          <div class="card-body p-4 d-flex justify-content-center align-items-center">
+            <a href="/new-post2" class="btn text-center custom-btn">New Post</a>
+          </div>
+        </div>
         {% endif %}
       </div>
     </div>
