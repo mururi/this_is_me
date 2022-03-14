@@ -46,10 +46,13 @@
         <p class="mb-0">Get instant notification for new blog posts</p>
       </div>
       <div class="col-md-6">
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Enter Your Email Address" aria-label="Your email address" aria-describedby="button-addon2">
-          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">SUBSCRIBE</button>
-        </div>
+        <!-- Subscription Form -->
+        <form action="/subscribe" method="POST">
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter Your Email Address" aria-label="Your email address" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">SUBSCRIBE</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

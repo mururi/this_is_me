@@ -9,7 +9,18 @@
 
 {% block content %}
 <div class="container-xxl pt-4">
-  <h2 class="fw-bolder mb-3">{{ post.title }}</h2>
+  <div class="d-flex justify-content-between">
+    <h2 class="fw-bolder mb-3">{{ post.title }}</h2>
+    {% if current_user.id == post.author %}
+    <div>
+      <a href="/delete-post/{{ post.id }}"  data-toggle="tooltip" data-placement="left" title="Delete Post"><i class="bi bi-trash3 "></i></a>
+      
+      <i class="bi bi-pencil-square ms-4"></i>
+    </div>
+  
+    {% endif %}
+  </div>
+  
   <div>
     <img src="{{ url_for('static', filename=post.featured_img) }}" class="img-fluid" alt="">
   </div>
