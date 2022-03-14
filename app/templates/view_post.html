@@ -29,12 +29,22 @@
     {{ post.content }}
   </div>
 
+  <!-- Display Comments -->
   <div class="py-4">
     <h3 class="mb-3">Comments</h3>
     {% for comment in comments %}
-    <div>
-      <p>{{ comment.content }}</p>
-      <p>by {{ comment.author | title }} ----- {{ comment.date_created.strftime('%Y-%m-%d') }}</p>
+    <div class="card custom-card mb-5 px-3">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h6 class="card-text">{{ comment.author | title }}</h6>
+          {% if current_user.id == post.author %}
+          <a href="/delete-comment/{{ comment.id }}"  data-toggle="tooltip" data-placement="left" title="Delete Comment"><i class="bi bi-trash3 "></i></a>
+          {% endif %}
+        </div>
+        
+        <p class="card-text">{{ comment.content }}</p>
+        <small class="card-text text-muted">{{ comment.date_created.strftime('%Y-%m-%d') }}</small>
+      </div>
     </div>
     {% endfor %}
   </div>
