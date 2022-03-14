@@ -5,7 +5,7 @@
 ## Description 
 This is a personal blog flask web app where users can share their stories and comment on other stories. The user also gets random inspirational quotes.
 
-![Personal Blog Web App](app/static/)
+![Personal Blog Web App](app/static/img/this_Is_me.png)
 
 ## How to Use
 ### Requirements
@@ -16,7 +16,7 @@ This is a personal blog flask web app where users can share their stories and co
 Ensure that your device of choice has a browser installed.
 Click the link provided below to view the site.
 
-https://
+https://this-is-me-blog.herokuapp.com/
 
 ### Using the App
 The user can navigate the web app easily and be able to:
