@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, abort, request
 from . import main
-from ..models import User, Post
+from ..models import User, Post, Comment
 from .forms import NewPost, UpdateProfile, NewComment
 from .. import db, photos
 from flask_login import login_required, current_user
@@ -98,3 +98,17 @@ def view_post(post_id):
         abort(404)
 
     return render_template('view_post.html', post = post, comment_form = comment_form)
+
+@main.route('/post/<int:post_id>/new-comment', methods = ['GET', 'POST'])
+def new_comment(post_id):
+    if request.method == "POST":
+        author = request.form.get('author')
+        content = request.form.get('content')
+        post_id = post_id
+
+        comment = Comment(author=author, content=content, post_id=post_id)
+
+        db.session.add(comment)
+        db.session.commit()
+
+    return redirect(f'/post/{post_id}')
