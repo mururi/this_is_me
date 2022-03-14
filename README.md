@@ -5,7 +5,7 @@
 ## Description 
 This is a personal blog flask web app where users can share their stories and comment on other stories. The user also gets random inspirational quotes.
 
-![Elevator Pitch App](app/static/)
+![Personal Blog Web App](app/static/)
 
 ## How to Use
 ### Requirements
