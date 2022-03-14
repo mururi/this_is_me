@@ -1,5 +1,5 @@
 # this.Is. me
-#### Elevator Pitch Web App, Mar 12 2022 
+#### Personal Blog Web App, Mar 12 2022 
 #### By **Dennis Kiboi** 
 
 ## Description 
