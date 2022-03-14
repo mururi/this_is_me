@@ -50,7 +50,16 @@ class Post(db.Model):
     featured_img = db.Column(db.String(), nullable=False)
     content = db.Column(db.String(), nullable=False)
     author = db.Column(db.Integer, db.ForeignKey('users.id', ondelete="CASCADE"), nullable=False)
+    comments = db.relationship('Comment', backref = 'post', lazy = "dynamic", passive_deletes=True)
     
 
     def __repr__(self):
         return f'{self.date_created}'
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key = True)
+    date_created = db.Column(db.DateTime(timezone = True), default = func.now())
+    author = db.Column(db.String(255), nullable=False)
+    content = db.Column(db.String(), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete="CASCADE"), nullable=False)
